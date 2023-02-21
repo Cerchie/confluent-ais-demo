@@ -91,7 +91,7 @@ These results might seem a little magical if you're not familiar with `nc` and `
 
 `nc` is a [netcat](https://linuxize.com/post/netcat-nc-command-with-examples/) command that reads and writes data across network connections. Here, we're connecting to the [ais websocket](https://www.kystverket.no/en/navigation-and-monitoring/ais/access-to-ais-data/) located at IP `153.44.253.27` and port `5631`.
 
-The `gpsdecode` after the first pipe does what it sounds like: decodes the gps data. 
+The `gpsdecode` command after the first pipe does what it sounds like: decodes the gps data. 
 
 Lastly, passing the `--unbuffered` flag to `jq` flushes the output after each JSON object is printed. As far as the `'.'` goes, you can create objects and arrays using `jq` syntax (see [examples](https://developer.zendesk.com/documentation/integration-services/developer-guide/jq-cheat-sheet/)) and `'.'` is a way of saying "Put this all in a top-level JSON object, if you please jq". 
 
