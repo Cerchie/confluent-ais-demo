@@ -71,9 +71,23 @@ Lastly, passing the `--unbuffered` flag to `jq` flushes the output after each JS
 
 ## Feeding the websocket results to Confluent Cloud
 
+Now, run this command to pipe in the data from the websocket to your topic in Confluent Cloud using kcat. Where the command says `YOUR_API_KEY_HERE` and `YOUR_API_SECRET_HERE`, replace those values with the api key and secret you downloaded earlier. 
 
+To find the `YOUR_BOOTSTRAP_SERVER_HERE` value, click on the 'Cluster Settings' tab on the left-hand navbar, and look under 'Endpoints'. You'll see your value there. 
+
+```
+nc 153.44.253.27 5631 |
+gpsdecode |
+kcat -X security.protocol=SASL_SSL -X sasl.mechanism=PLAIN -b YOUR_BOOTSTRAP_SERVER_HERE -X sasl.username=YOUR_API_KEY_HERE -X sasl.password=YOUR_API_SECRET_HERE -t ais -P
+```
 
 ## Confirming input in Confluent Cloud
+
+Navigate to your `ais` topic in the Confluent Cloud interface using the left-hand navbar, click the 'messages' tab, and view the messages coming in! 
+
+<img width="1714" alt="Navigate to your `ais` topic in the Confluent Cloud interface using the left-hand navbar" src="https://user-images.githubusercontent.com/54046179/220414720-b35c6e03-aada-491a-961b-710e6bccb8b7.png">
+
+# TENTATIVE NEXT STEPS
 
 ## Setting up ksqlDB
 
