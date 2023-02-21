@@ -109,7 +109,7 @@ kcat -X security.protocol=SASL_SSL -X sasl.mechanism=PLAIN -b YOUR_BOOTSTRAP_SER
 
 ## Confirming input in Confluent Cloud
 
-Navigate to your `ais` topic in the Confluent Cloud interface using the left-hand navbar, click the 'messages' tab, and view the messages coming in! 
+Navigate to your `ais` topic in the Confluent Cloud interface using the left-hand navbar, click the 'messages' tab, navigate to a partition using the dropdown menu, and view the messages coming in! 
 
 <img width="1714" alt="Navigate to your `ais` topic in the Confluent Cloud interface using the left-hand navbar" src="https://user-images.githubusercontent.com/54046179/220414720-b35c6e03-aada-491a-961b-710e6bccb8b7.png">
 
