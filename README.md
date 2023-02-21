@@ -1,1 +1,81 @@
 # ais-demo
+
+## Overview
+
+Follow along this tutorial-style demo to learn how to set up [Confluent Cloud](https://confluent.cloud) and analyze data using [ksqlDB](https://ksqldb.io/). We'll use AIS, which is an [automatic tracking system](https://en.wikipedia.org/wiki/Automatic_identification_system) used by ships, to cull live public data on ships' speed, location, and other details. We'll then feed that data in to an Apache Kafka® topic via a connection to Confluent Cloud. Afterwards, we'll build streams using ksqlDB and run analyses on that data. 
+
+## Pre-requisites
+
+1. Sign up for a [Confluent Cloud](https://confluent.cloud) account. 
+
+2. Make sure you have `jq` (which is a utility that formats JSON results) and `gpsd` (which formats AIS data) and `kcat` (which lets you see what's going on in a Kafka cluster) installed by running these commands in your terminal:
+
+`jq --version` 
+
+`gpsd --version`
+
+`kcat` <- should result in an error and a menu page. A version flag feature has [been requested](https://github.com/edenhill/kcat/issues/419). 
+
+
+2a. If you don't have them installed, you can install them using [brew](https://brew.sh/): 
+
+`brew install jq`
+
+`brew install gpsd`
+
+Install kcat using the [instructions](https://github.com/edenhill/kcat) from the repo README. 
+
+## Setting up Confluent Cloud
+
+Sign in to your Confluent Cloud account. Head over to the [confluent.cloud/environments](https://confluent.cloud/environments) page and click 'Add Cloud Environment' on the top right of your screen. 
+
+<img width="1459" alt="click Add Cloud Environment on the top right" src="https://user-images.githubusercontent.com/54046179/220384774-b7518172-d674-4f92-ab80-6b4ac7aa6cf4.png">
+
+Name your environment 'ais_data' and click 'Create'. Note: If you're prompted to select a Stream Governance package, just click the 'I'll do it later' link at the bottom of the page. 
+
+On your cluster page, click 'Create cluster on my own'. 
+
+<img width="1361" alt="click 'Create cluster on my own'" src="https://user-images.githubusercontent.com/54046179/220385552-680095bc-e927-4148-bcf7-7f94bb1790ff.png">
+
+Select the basic configuration. 
+
+<img width="1705" alt="Screen Shot 2023-02-21 at 8 21 07 AM" src="https://user-images.githubusercontent.com/54046179/220385813-5024e575-cacd-468f-9416-e23befebcc7d.png">
+
+Then, select your region in 2 Region/zones. Next, name your cluster 'ais_data', and click 'Launch cluster'. You'll be re-directed to your cluster dashboard.
+
+Use the left-hand navbar to navigate to the API key page, create an API key (give it global scope) and download the values for later. 
+
+<img width="1086" alt="Use the left-hand navbar to navigate to the API key page" src="https://user-images.githubusercontent.com/54046179/220386731-f178c915-12c7-41c1-9c47-cdfc1c1ff163.png">
+
+Now, navigate to 'Topics' in the left-hand navbar, and create a topic named 'ais' using the default values. 
+
+<img width="1606" alt="navigate to 'Topics' in the left-hand navbar" src="https://user-images.githubusercontent.com/54046179/220387497-837bf9ff-c2c3-428e-9868-1d7f2201c23c.png">
+
+That's all for now. We'll revisit the Confluent Cloud environment in a minute so keep that tab open! 
+
+## Connecting to the websocket
+
+To connect to the website and view formatted JSON results, run this commmand in your terminal:
+
+```
+nc 153.44.253.27 5631|gpsdecode |jq --unbuffered '.'
+```
+
+The results might seem a little magical if you're not familiar with `nc` and `jq` so let's break it down. ('Magic' is not good in software if it means we don't understand what's happening!) 
+
+`nc` is a [netcat](https://linuxize.com/post/netcat-nc-command-with-examples/) command that reads and writes data across network connections. Here, we're connecting to the [ais websocket](https://www.kystverket.no/en/navigation-and-monitoring/ais/access-to-ais-data/) located at IP `153.44.253.27` and port `5631`.
+
+The `gpsdecode` after the first pipe does what it sounds like: decodes the gps data. 
+
+Lastly, passing the `--unbuffered` flag to `jq` flushes the output after each JSON object is printed. As far as the `'.'` goes, you can create objects and arrays using `jq` syntax (see [examples](https://developer.zendesk.com/documentation/integration-services/developer-guide/jq-cheat-sheet/)) and `'.'` is a way of saying "Put this all in a top-level JSON object, if you please jq". 
+
+## Feeding the websocket results to Confluent Cloud
+
+
+
+## Confirming input in Confluent Cloud
+
+## Setting up ksqlDB
+
+## Analyzing data with ksqlDB
+
