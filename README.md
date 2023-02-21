@@ -23,7 +23,7 @@ Follow along this tutorial-style demo to learn how to set up [Confluent Cloud](h
 
 `brew install gpsd`
 
-Install kcat using the [instructions](https://github.com/edenhill/kcat) from the repo README. 
+and install kcat using the [instructions](https://github.com/edenhill/kcat) from the repo README. 
 
 ## Setting up Confluent Cloud
 
