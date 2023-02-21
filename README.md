@@ -8,7 +8,7 @@ Follow along this tutorial-style demo to learn how to set up [Confluent Cloud](h
 
 1. Sign up for a [Confluent Cloud](https://confluent.cloud) account. 
 
-2. Make sure you have `jq` (which is a utility that formats JSON results) and `gpsd` (which formats AIS data) and `kcat` (which lets you see what's going on in a Kafka cluster) installed by running these commands in your terminal:
+2. Make sure you have `jq` (which is a utility that formats JSON results), `gpsd` (which formats AIS data) and `kcat` (which lets you see what's going on in a Kafka cluster) by running these commands in your terminal:
 
 `jq --version` 
 
