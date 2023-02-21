@@ -61,7 +61,33 @@ To connect to the website and view formatted JSON results, run this commmand in 
 nc 153.44.253.27 5631|gpsdecode |jq --unbuffered '.'
 ```
 
-The results might seem a little magical if you're not familiar with `nc` and `jq` so let's break it down. ('Magic' is not good in software if it means we don't understand what's happening!) 
+You'll see results similar to:
+
+```
+{
+  "class": "AIS",
+  "device": "stdin",
+  "type": 1,
+  "repeat": 0,
+  "mmsi": 257017920,
+  "scaled": true,
+  "status": 0,
+  "status_text": "Under way using engine",
+  "turn": 0,
+  "speed": 0,
+  "accuracy": false,
+  "lon": 6.080573,
+  "lat": 61.863708,
+  "course": 300.2,
+  "heading": 115,
+  "second": 28,
+  "maneuver": 0,
+  "raim": false,
+  "radio": 81923
+}
+```
+
+These results might seem a little magical if you're not familiar with `nc` and `jq` so let's break it down. ('Magic' is not good in software if it means we don't understand what's happening!) 
 
 `nc` is a [netcat](https://linuxize.com/post/netcat-nc-command-with-examples/) command that reads and writes data across network connections. Here, we're connecting to the [ais websocket](https://www.kystverket.no/en/navigation-and-monitoring/ais/access-to-ais-data/) located at IP `153.44.253.27` and port `5631`.
 
