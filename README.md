@@ -14,7 +14,7 @@ Follow along this tutorial-style demo to learn how to set up [Confluent Cloud](h
 
 `gpsd --version`
 
-`kcat` <- should result in an error and a menu page. A version flag feature has [been requested](https://github.com/edenhill/kcat/issues/419). 
+`kcat -V` 
 
 
 2a. If you don't have them installed, you can install them using [brew](https://brew.sh/): 
