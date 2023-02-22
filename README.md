@@ -55,7 +55,7 @@ That's all for now. We'll revisit the Confluent Cloud environment in a minute so
 
 ## Connecting to the websocket
 
-To connect to the website and view formatted JSON results, run this commmand in your terminal:
+To connect to the website and view formatted JSON results, run this command in your terminal:
 
 ```
 nc 153.44.253.27 5631|gpsdecode |jq --unbuffered '.'
