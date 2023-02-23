@@ -89,7 +89,7 @@ You'll see results similar to:
 }
 ```
 
-These results might seem a little magical if you're not familiar with `nc` and `jq` so let's break it down. ('Magic' is not good in software if it means we don't understand what's happening!) 
+These results might seem a little magical if you're not familiar with `nc` and `jq`, so let's break it down. 
 
 `nc` is a [netcat](https://linuxize.com/post/netcat-nc-command-with-examples/) command that reads and writes data across network connections. Here, we're connecting to the [ais websocket](https://www.kystverket.no/en/navigation-and-monitoring/ais/access-to-ais-data/) located at IP `153.44.253.27` and port `5631`.
 
