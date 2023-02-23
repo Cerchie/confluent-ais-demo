@@ -39,7 +39,7 @@ Sign in to your Confluent Cloud account. Head over to the [confluent.cloud/envir
 
 Name your environment 'ais_data' and click 'Create'. Note: If you're prompted to select a Stream Governance package, just click the 'I'll do it later' link at the bottom of the page. 
 
-On your cluster page, click 'Create cluster on my own'. 
+On your cluster page, click 'Create cluster on my own' or 'Create cluster'. 
 
 <img width="1361" alt="click 'Create cluster on my own'" src="https://user-images.githubusercontent.com/54046179/220385552-680095bc-e927-4148-bcf7-7f94bb1790ff.png">
 
