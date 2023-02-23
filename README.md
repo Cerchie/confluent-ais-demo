@@ -61,6 +61,8 @@ To connect to the website and view formatted JSON results, run this command in y
 nc 153.44.253.27 5631|gpsdecode |jq --unbuffered '.'
 ```
 
+Note: you can ctrl+C or click the terminal to pause the flow of data. 
+
 You'll see results similar to:
 
 ```
