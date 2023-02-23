@@ -47,7 +47,7 @@ Select the basic configuration.
 
 <img width="1705" alt="Screen Shot 2023-02-21 at 8 21 07 AM" src="https://user-images.githubusercontent.com/54046179/220385813-5024e575-cacd-468f-9416-e23befebcc7d.png">
 
-Then, select your region in 2 Region/zones. Next, name your cluster 'ais_data', and click 'Launch cluster'. You'll be re-directed to your cluster dashboard.
+Then, select your prodiver and region. Next, name your cluster 'ais_data', and click 'Launch cluster'. You'll be re-directed to your cluster dashboard.
 
 Use the left-hand navbar to navigate to the API key page, create an API key (give it global scope) and download the values for later. 
 
