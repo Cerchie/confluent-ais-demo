@@ -101,7 +101,7 @@ Lastly, passing the `--unbuffered` flag to `jq` flushes the output after each JS
 
 Now, run this command to pipe in the data from the websocket to your topic in Confluent Cloud using kcat. Where the command says `YOUR_API_KEY_HERE` and `YOUR_API_SECRET_HERE`, replace those values with the api key and secret you downloaded earlier. 
 
-To find the `YOUR_BOOTSTRAP_SERVER_HERE` value, click on the 'Cluster Settings' tab on the left-hand navbar, and look under 'Endpoints'. You'll see your value there. 
+To find the `YOUR_BOOTSTRAP_SERVER_HERE` value, click on the 'Cluster Settings' tab on the left-hand navbar, and look under 'Endpoints'. You'll see your value there. It's also in the credentials file you downloaded earlier. 
 
 ```
 nc 153.44.253.27 5631 |
