@@ -4,6 +4,8 @@
 
 Follow along this tutorial-style demo to learn how to set up [Confluent Cloud](https://confluent.cloud) and analyze data using [ksqlDB](https://ksqldb.io/). We'll use AIS, which is an [automatic tracking system](https://en.wikipedia.org/wiki/Automatic_identification_system) used by ships, and pull live public data from it on ships' speed, location, and other details. We'll then feed that data in to an Apache Kafka® topic via a connection to Confluent Cloud. Afterwards, we'll build streams using ksqlDB and run analyses on that data. 
 
+Note: this tutorial is based on the [Confluent blog post](https://www.confluent.io/blog/streaming-etl-and-analytics-for-real-time-location-tracking/) by Robin Moffat. It provides guided directions on how to get the same results as the author. 
+
 ## Pre-requisites
 
 1 - Sign up for a [Confluent Cloud](https://confluent.cloud) account. 
