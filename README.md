@@ -17,13 +17,19 @@ Follow along this tutorial-style demo to learn how to set up [Confluent Cloud](h
 `kcat -V` 
 
 
-2a. If you don't have them installed, you can install them using [brew](https://brew.sh/): 
+2a. If you need to install them: 
 
-`brew install jq`
+View the [instructions](https://stedolan.github.io/jq/download/) for installing `jq` depending on your operating system. 
 
-`brew install gpsd`
+For `gpsd`, `brew install gpsd` for MacOS,
 
-and install kcat using the [instructions](https://github.com/edenhill/kcat) from the repo README. 
+or 
+
+`apt-get install gpsd-clients` for Linux.
+
+unfortunately, installation is [not recommended for WSL2](https://gpsd.gitlab.io/gpsd/installation.html) and linux distribution is recommended. 
+
+Install kcat using the [instructions](https://github.com/edenhill/kcat) from the repo README. 
 
 ## Setting up Confluent Cloud
 
