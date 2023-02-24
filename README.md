@@ -125,7 +125,5 @@ Navigate to your `ais` topic in the Confluent Cloud interface using the left-han
 
 # TENTATIVE NEXT STEPS
 
-## Setting up ksqlDB
-
-## Analyzing data with ksqlDB
+## ubidots.com
 
