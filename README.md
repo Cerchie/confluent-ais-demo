@@ -1,4 +1,4 @@
-# ais-demo
+# confluent-ais-demo
 
 ## Overview
 
