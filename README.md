@@ -123,7 +123,63 @@ Navigate to your `ais` topic in the Confluent Cloud interface using the left-han
 
 <img width="1714" alt="Navigate to your `ais` topic in the Confluent Cloud interface using the left-hand navbar" src="https://user-images.githubusercontent.com/54046179/220414720-b35c6e03-aada-491a-961b-710e6bccb8b7.png">
 
-# TENTATIVE NEXT STEPS
+_________________________________________________________________________
 
-## ubidots.com
+## Part 2: Using ksqlDB to transform the data
+
+In this part of the tutorial, we'll work with ksqlDB to transform the data coming in to the `ais` topic. 
+
+## Provisioning your cluster. 
+
+First, you'll need to provision a ksqlDB cluster. Select 'ksqlDB' in the left-hand navbar, and click either 'Add cluster' or 'create cluster myself'. Select 'global access', and on the next page, accept the default cluster name and cluster size. Then, launch your cluster!
+
+## Create your data stream. 
+
+We'll create a stream based on the `ais` topic. Open the 'editor' tab.
+
+
+> Note: Double-check to make sure your `auto.offset.reset` tab is set to 'earliest. 
+
+<img width="784" alt="auto.offset.set form" src="https://user-images.githubusercontent.com/54046179/223534320-eb8f8323-5e41-466f-9d47-316f562bcc94.png">
+
+Now, copy/paste this query in:
+
+```sql
+create stream ais (class VARCHAR, device VARCHAR, type INT, repeat INT, mmsi INT, scaled BOOLEAN, status INT, status_text VARCHAR, turn INT, speed INT, accuracy BOOLEAN, lon INT, lat INT, course INT, heading INT, second INT, maneuver INT, raim BOOLEAN, radio INT)  with (value_format = 'JSON', kafka_topic = 'ais');
+```
+This query creates the columns of data in a stream based on what comes in from the AIS port, using a JSON schema. 
+
+Once you've run the query, check your 'Streams' tab to make sure you can see the stream listed. Click on it. You'll be able to see your messages coming through! 
+
+<img width="1030" alt="Screen Shot 2023-03-07 at 6 32 40 AM" src="https://user-images.githubusercontent.com/54046179/223534621-b92df7d8-0ef1-4e7d-b02c-3a7494102e07.png">
+
+## Filtering the data. 
+
+Now, say you're building a frontend application and you don't need every piece of data listed in the stream. You could filter in the application client-side logic, but it'd be cleaner to create a new topic for your purposes. Let's do it! 
+
+First, let's create a stream based on the columns we need: 
+
+```
+CREATE STREAM ais_lat_long_mmsi WITH (kafka_topic = 'ais') AS
+    SELECT lat,lon,mmsi
+      FROM ais;
+```
+
+Now, if we then query that stream, we can see the filtered data coming in! 
+
+<img width="825" alt="filtered data" src="https://user-images.githubusercontent.com/54046179/223536782-38733f6b-ffa8-4e3c-96cd-dc89c8a29190.png">
+
+But what if we also want data from a specific boat? Looking at the data coming in, pick an MMSI that shows up frequently. Use that to populate a new query:
+
+```
+CREATE STREAM ais_lat_long_mmsi_boat WITH (kafka_topic = 'ais') AS
+    SELECT lat,lon,mmsi
+      FROM ais
+      WHERE mmsi = YOUR_SELECTED_MMSI;
+```
+
+^ something wrong with this query; we're working on it! 
+
+
+
 
