@@ -157,29 +157,21 @@ Once you've run the query, check your 'Streams' tab to make sure you can see the
 
 Now, say you're building a frontend application and you don't need every piece of data listed in the stream. You could filter in the application client-side logic, but it'd be cleaner to create a new topic for your purposes. Let's do it! 
 
-First, let's create a stream based on the columns we need: 
+First, let's create a stream based on the columns we need. You'll need to pick an MMSI that seems frequent based on your view of the data: 
 
 ```
-CREATE STREAM ais_lat_long_mmsi WITH (kafka_topic = 'ais') AS
-    SELECT lat,lon,mmsi
-      FROM ais;
+CREATE STREAM AIS_FILTERED AS 
+SELECT
+  MMSI,
+  LAT,
+  LON
+FROM AIS
+WHERE (MMSI = YOUR_SELECTED_MMSI)
+EMIT CHANGES;
 ```
 
 Now, if we then query that stream, we can see the filtered data coming in! 
 
-<img width="825" alt="filtered data" src="https://user-images.githubusercontent.com/54046179/223536782-38733f6b-ffa8-4e3c-96cd-dc89c8a29190.png">
 
-But what if we also want data from a specific boat? Looking at the data coming in, pick an MMSI that shows up frequently. Use that to populate a new query:
-
-```
-CREATE STREAM ais_lat_long_mmsi_boat WITH (kafka_topic = 'ais') AS
-    SELECT lat,lon,mmsi
-      FROM ais
-      WHERE mmsi = YOUR_SELECTED_MMSI;
-```
-
-^ something wrong with this query; we're working on it! 
-
-
-
+<img width="1387" alt="screenshot of query with data coming in" src="https://user-images.githubusercontent.com/54046179/223548662-ad87f8d5-9860-4f6b-83ab-82023ef17003.png">
 
